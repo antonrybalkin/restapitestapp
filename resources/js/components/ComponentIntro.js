@@ -12,7 +12,7 @@ const ComponentIntro = () => {
                     <div className={"intro_contaner"}>
                         <div className={"intro_block"}>
                             <h1 className={"intro_title"}>
-                                Test assignment for back end from old test assignment front-end developer
+                                Test assignment for back-end, front from old test assignment front-end developer
                             </h1>
                             <p className={"intro_desc"}>
                                 What defines a good front-end developer is one that has skilled knowledge of

@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', [Index::class, 'index']);
+Route::get('/', function () {return view("index");});
+Route::get('/livewire', [Index::class, 'index']);

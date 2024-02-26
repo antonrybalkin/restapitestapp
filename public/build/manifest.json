@@ -4,6 +4,11 @@
     "isDynamicEntry": true,
     "src": "node_modules/web-vitals/dist/web-vitals.js"
   },
+  "resources/css/app.css": {
+    "file": "assets/app-58ab0dbc.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
   "resources/js/assets/Logo.svg": {
     "file": "assets/Logo-865dac05.svg",
     "src": "resources/js/assets/Logo.svg"
@@ -38,7 +43,7 @@
     "dynamicImports": [
       "node_modules/web-vitals/dist/web-vitals.js"
     ],
-    "file": "assets/index-23d5e0d3.js",
+    "file": "assets/index-49c6205f.js",
     "isEntry": true,
     "src": "resources/js/index.js"
   }

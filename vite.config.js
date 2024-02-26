@@ -7,7 +7,7 @@ export default defineConfig({
         react(),
         babel(),
         laravel({
-            input: ['resources/js/assets/scss/app.scss','resources/js/index.js'],
+            input: ['resources/js/assets/scss/app.scss','resources/css/app.css','resources/js/index.js'],
             refresh: true,
         }),
         
