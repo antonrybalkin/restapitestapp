@@ -1,0 +1,110 @@
+/*
+Styles for intro component and what inner
+*/
+.intro {
+    position: relative;
+    width: 100%;
+    color: #FFFFFF;
+
+    &_bkgcontainer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        max-width: 1170px;
+        background-color: #000000;
+        mix-blend-mode: multiply;
+        z-index: -1;
+        width: 100%;
+    }
+
+    &_bkg {
+        width: 100%;
+        opacity: 0.5;
+        object-position: 50% 58%;
+        object-fit: none;
+
+    }
+
+    &_title {
+        margin-top: 0;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    &_contaner {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    &_desc {
+        font-weight: 400;
+        font-size: 16px;
+        text-align: center;
+        margin: 0 0 32px;
+        line-height: 26px;
+    }
+
+    &_block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+}
+
+.intro,
+.intro_bkg,
+.intro_bkgcontainer {
+    height: 500px;
+}
+@media screen and (max-width:359px) {
+    .intro_block {
+        width: 100%;
+        max-width: 328px;
+        height: 389px;
+    }
+}
+@media screen and (min-width:768px) {
+    .intro_block {
+        width: 380px;
+        height: 323px;
+    }
+}
+@media screen and (min-width:1024px) {
+    .intro,
+    .intro_bkg,
+    .intro_bkgcontainer {
+        height: 650px;
+
+    }
+}
+.intro_button {
+    @extend %button
+}
+ @media screen and (min-width:2560px){
+
+    .intro_block {
+        justify-content: center;
+
+    }
+}
+@media screen and (max-width:767px) {
+
+    .intro_block {
+        margin-bottom: 30px;
+        text-align: center;
+
+    }
+    .intro_contaner {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .intro_bkg {
+
+        object-position: 50% 55%;
+
+    }
+}

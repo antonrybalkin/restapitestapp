@@ -1,0 +1,65 @@
+/*
+Styles for header component and what inner 
+*/
+.header {
+    background-color: #FFFFFF;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    &_wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        max-width: 1170px;
+        margin: 0 auto;
+    }
+    &_logo {
+        height: 26px;
+        width: 104px;
+        img {
+            height: 26px;
+            width: 104px;
+        }
+
+    }
+    &_buttons {
+        display: flex;
+
+        gap: 10px;
+    }
+    &_button {
+        @extend %button
+    }
+}
+@media screen and (min-width:1024px) and (max-width:1170px) {
+    .header_logo {
+        padding-left: 60px;
+
+    }
+    .header_buttons {
+        padding-right: 60px;
+    }
+
+}
+@media screen and (max-width:767px) {
+    .header_logo {
+        padding-left: 16px;
+
+    }
+    .header_buttons {
+        padding-right: 16px;
+    }
+}
+@media screen and (min-width:768px)and (max-width:1023px) {
+    .header_logo {
+        padding-left: 32px;
+
+    }
+    .header_buttons {
+        padding-right: 32px;
+    }
+}

@@ -1,0 +1,153 @@
+/*
+Styles for Users component and what inner
+*/
+.users {
+    margin-top: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    
+    &_title {
+        margin: 0;
+        text-align: center;
+    }
+    &_cards {
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+}
+
+.user {
+    background-color: #FFFFFF;
+    height: calc(254px - 40px);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    &_email,
+    &_fullname,
+    &_phone,
+    &_role {
+        cursor: pointer;
+        text-align: center;
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    &_avatar,
+    &_img {
+        height: 70px;
+        width: 70px;
+        border-radius: 50%;
+    }
+    &_moreinfo {
+        text-align: center;
+    }
+    &_img {
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+@media screen and (max-width:359px) {
+    .user {
+        max-width: calc(328px - 40px);
+        width: 100%;
+        justify-content: center;
+    }
+
+    .users {
+        justify-content: center;
+        &_cards {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+    }
+}
+
+@media screen and (min-width:360px) and (max-width:767px) {
+    .user {
+        width: calc(328px - 40px);
+    }
+
+    .users {
+        padding-left: 16px;
+        padding-right: 16px;
+        &_cards {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+    }
+}
+@media screen and (min-width:768px) and (max-width:1023px) {
+    .user {
+        width: calc(344px - 40px);
+    }
+
+    .users {
+        &_cards {
+            gap: 16px;
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+}
+@media screen and (min-width:1024px) and (max-width:1169px) {
+    .user {
+        width: calc(282px - 40px);
+    }
+    .users {
+
+        &_cards {
+            gap: 29px;
+            justify-content: center;
+        }
+        &_title
+        {
+            margin-left: 0px;
+        }
+    }
+
+}
+@media screen and (width:1024px)
+{
+    .users {
+        padding-left: 60px;
+        padding-right: 60px;
+        &_cards {
+            gap: 29px;
+        }
+        &_title
+        {
+            margin-left: 0px;
+        }
+    }
+}
+@media screen and (min-width:1170px) {
+    .user {
+        width: calc(370px - 40px);
+    }
+    .users{
+       
+    &_cards {
+        gap: 29px;
+    }}
+    
+
+}
+
+.users_button {
+    @extend %button;
+    width: 120px;
+}
+

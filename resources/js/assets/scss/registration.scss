@@ -1,0 +1,342 @@
+/*
+Styles for registration component and what inner
+*/
+
+.registration {
+    margin-top: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 100px;
+    &_title {
+        margin: 0;
+        text-align: center;
+    }
+
+    &_form {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        width: 100%;
+        max-width: 380px;
+        @media screen and (min-width:1024px) and (max-width:1170px) {
+            gap: 48px;
+        }
+        
+    }
+    &_roleblock {
+        margin-top: -20px;
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+        color: #000000;
+        @media screen and (width:1024px) {
+        }
+        @media screen and (min-width:768px) and (max-width:1023px) {
+            gap: 0;
+        }
+        @media screen and (min-width:2560px) {
+
+            gap: 0;
+
+        }
+    }
+
+    &_roletitle {
+        display: block;
+        @media screen and (max-width:767px){
+            margin-bottom: 0;
+        }
+        @media screen and (width:1024px) {
+            margin-bottom: 4px;
+        }
+
+    }
+
+    &_fieldset {
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+        padding: 0;
+        margin: 0;
+        border: none;
+        &.error {
+            border: 1px solid $error;
+            border-radius: 10px;
+            padding-top: 10px;
+            padding-bottom: 5px;
+            position: relative;
+        }
+        .input_error {
+            position: absolute;
+            top: 150px;
+            left: 0;
+            color: $error;
+            font-size: 14px;
+        }
+        @media screen and (max-width:767px)
+        {
+            margin-top: 3px;
+        }
+        
+        @media screen and (min-width:768px) and (max-width:1023px) {
+            gap: 12px;
+        }
+        @media screen and (min-width:2560px) {
+            margin-top: -2px;
+        }
+
+    }
+
+    &_succes {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    &_succestitle {
+        @extend .registration_title
+    }
+
+    &_succesimg {
+        width: 328px;
+        height: 290px;
+    }
+
+    &_submit {
+        background-color: #B4B4B4;
+        align-self: center;
+        color: #FFFFFFDE;
+        opacity: 0.87;
+        margin-top: -2px;
+    }
+
+    &_submit {
+        @extend %button;
+        @media screen and (min-width:1024px) and (max-width:1170px) {
+            margin-top: 1px;
+
+        }
+        @media screen and (min-width:768px) and (max-width:1023px) {
+            margin-top: -2px;
+        }
+
+    }
+
+}
+@media screen and (max-width:767px) {
+    .registration {
+        padding-left: 16px;
+        padding-right: 16px;
+        &_form {
+            width: 328px;
+        }
+    }
+}
+@media screen and (min-width:768px) and (max-width:1023px) {
+    .registration {
+        justify-content: center;
+
+    }
+}
+@media screen and (min-width:1025px) and (max-width:1170px) {
+    .registration {
+        justify-content: center;
+    }
+
+}
+@media screen and (width:1024px) {
+    .registration {
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+
+}
+@media screen and (min-width:1025px) {
+    .registration {
+        justify-content: center;
+    }
+
+}
+
+.input {
+    height: 24px;
+    width: calc(100% - 32px);
+    padding: 14px 15px;
+    background-color: #F8F8F8;
+    border: 1px solid #D0CFCF;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    color: #7E7E7E;
+    &.error {
+        border-color: $error;
+    }
+    &_label {
+        position: relative;
+        height: 54px;
+        @media screen and (min-width:1024px) and (max-width:1170px) {
+            height: 56px;
+        }
+    }
+    &_error {
+        position: absolute;
+        top: 54px;
+        left: 0;
+        color: $error;
+        font-size: 14px;
+    }
+    &_helper {
+        position: absolute;
+        top: 58px;
+        left: 16px;
+        font-size: 14px;
+        color: #7E7E7E;
+    }
+    &:focus {
+        color: #000000DE;
+    }
+    &:not(input[value=""]) {
+        color: #000000DE;
+    }
+}
+
+.role {
+    position: relative;
+    padding-left: 32px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-family: 'Nunito', sans-serif;
+    @media screen and (min-width:768px) and (max-width:1023px) {
+
+        margin-top: -1px;
+    }
+
+    &_option ~ &_mark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc(20px - 2px);
+        height: calc(20px - 2px);
+        border-radius: 50%;
+        border: 1px solid #D0CFCF;
+        z-index: 5;
+
+    }
+    &_option:checked ~ &_mark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc(20px - 2px);
+        height: calc(20px - 2px);
+        border-radius: 50%;
+        border: 1px solid #00BDD3;
+        z-index: 5;
+
+    }
+    &_option:checked ~ &_mark::after {
+        content: " ";
+        top: 50%;
+        left: 50%;
+        transform: translate(-45%,-50%);
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #00BDD3;
+        z-index: 6;
+    }
+    &_title {
+        text-align: center;
+    }
+    &_option {
+        margin: 0;
+        padding: 0;
+        height: 20px;
+        width: 20px;
+        visibility: hidden;
+    }
+}
+
+.file {
+    &_block {
+        position: relative;
+        cursor: pointer;
+        height: 54px;
+        width: 100%;
+    }
+
+    &_input {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        z-index: 5;
+        height: calc(100% - 30px);
+        width: calc(100% - 115px);
+        padding: 14px 16px;
+        background-color: #F8F8F8;
+        border: 1px solid #D0CFCF;
+        border-radius: 4px;
+        padding-left: 98px;
+        transform: translate(0, -53%);
+        display: flex;
+        align-items: center;
+        z-index: 5;
+        &.error {
+            border-color: $error;
+        }
+        @media screen and (min-width:768px) and (max-width:1023px) {
+            width: calc(100% - 118px);
+            transform:translate(0, -57%)
+        }
+        @media screen and (min-width:1024px)  {
+            transform: translate(0, -53%);
+        }
+
+    }
+    &_input::before {
+        content: "Upload";
+        position: absolute;
+        top: 50%;
+        left: -1px;
+        width: 51px;
+        height: 24px;
+        padding: 14px 15px;
+        background-color: #F8F8F8;
+        border: 1px solid #000000DE;
+        border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
+        transform: translate(0, -51%);
+        z-index: 6;
+        @media screen and (width:1024px) {
+            transform: translate(0, -49%);
+        }
+        @media screen and (min-width:768px) and (max-width:1023px) {
+            transform: translate(0, -50%);
+        }
+        @media screen and (min-width:1025px) and (max-width:1170px) {
+            transform: translate(0, -50%);
+        }
+        @media screen and (min-width:2560px) {
+            transform: translate(0, -50%);
+        }
+
+    }
+    &_input.error::before {
+        border-color: $error;
+    }
+    &_error {
+        position: absolute;
+        top: 54px;
+        left: 0;
+        color: $error;
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,45 @@
+{
+  "node_modules/web-vitals/dist/web-vitals.js": {
+    "file": "assets/web-vitals-60d3425a.js",
+    "isDynamicEntry": true,
+    "src": "node_modules/web-vitals/dist/web-vitals.js"
+  },
+  "resources/js/assets/Logo.svg": {
+    "file": "assets/Logo-865dac05.svg",
+    "src": "resources/js/assets/Logo.svg"
+  },
+  "resources/js/assets/Preloader.svg": {
+    "file": "assets/Preloader-2cc868cf.svg",
+    "src": "resources/js/assets/Preloader.svg"
+  },
+  "resources/js/assets/cropBkg.webp": {
+    "file": "assets/cropBkg-019d6003.webp",
+    "src": "resources/js/assets/cropBkg.webp"
+  },
+  "resources/js/assets/scss/app.scss": {
+    "file": "assets/app-3490d46d.css",
+    "isEntry": true,
+    "src": "resources/js/assets/scss/app.scss"
+  },
+  "resources/js/assets/success-image.svg": {
+    "file": "assets/success-image-c29cd668.svg",
+    "src": "resources/js/assets/success-image.svg"
+  },
+  "resources/js/index.js": {
+    "assets": [
+      "assets/cropBkg-019d6003.webp",
+      "assets/Logo-865dac05.svg",
+      "assets/Preloader-2cc868cf.svg",
+      "assets/success-image-c29cd668.svg"
+    ],
+    "css": [
+      "assets/app-3490d46d.css"
+    ],
+    "dynamicImports": [
+      "node_modules/web-vitals/dist/web-vitals.js"
+    ],
+    "file": "assets/index-23d5e0d3.js",
+    "isEntry": true,
+    "src": "resources/js/index.js"
+  }
+}
