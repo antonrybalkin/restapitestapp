@@ -40,15 +40,22 @@ const getDimention = uri => new Promise(resolve => {
  * @returns {Boolean} status
  */
 export async function validationImg(file) {
+    let status = {
+        valid: false,
+        error: []
+    }
+if(file==undefined)
+{
+    status.valid=false;
+    status.error=['File is required'];
+    return status;
+}
     const fileAsDataURL = window
         .URL
         .createObjectURL(file);
     const propertis = await getDimention(fileAsDataURL);
     let size = file.size / 10000000 < 5;
-    let status = {
-        valid: false,
-        error: []
-    }
+    
     if (!size) {
         status
             .error

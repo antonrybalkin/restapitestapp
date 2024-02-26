@@ -24,7 +24,6 @@ Route::group(['prefix' => 'v1'], function () {
 
     Route::group(['middleware' => 'token'], function () {
         Route::post('/users', [UsersController::class, 'addUser'])->name("postUser");
-
     });
 
 });

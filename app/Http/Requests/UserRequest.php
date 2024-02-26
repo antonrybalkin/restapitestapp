@@ -30,7 +30,7 @@ class UserRequest extends FormRequest
             'email' => ['required', 'unique:users', 'string'],
             'phone' => ['required', 'unique:users', 'string'],
             'position_id' => ['required', 'integer', 'min:1'],
-            'photo' => ['required', 'mimes:jpg,jpeg', 'max:5000'],
+            'photo' => ['required', 'mimes:jpeg,jpg', 'max:5000'],
         ];
     }
     protected function failedValidation(Validator $validator)

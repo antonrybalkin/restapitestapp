@@ -18,7 +18,6 @@ class GetToken
      */
     public function handle(Request $request, Closure $next)
     {
-        $all = $request->all();
 
         if ($request->headers->has("token")) {
             $token = $request->headers->get("token");
@@ -41,7 +40,6 @@ class GetToken
                 ], 401);
             }
         }
-
         return response()->json([
             "success" => false,
             "message" => "The token expired.",
