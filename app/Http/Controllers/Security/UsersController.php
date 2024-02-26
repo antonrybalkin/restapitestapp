@@ -16,13 +16,14 @@ class UsersController extends Controller
     public function getUserByID($id): JsonResponse
     {
         if (!is_numeric($id)) {
-            return response()->json(["success" => false,
+
+            throw new HttpResponseException(response()->json(["success" => false,
                 "message" => "Validation failed",
                 "fails" => [
                     "user_id" => [
                         "The user_id must be an integer.",
                     ],
-                ]], 400);
+                ]], 400));
         }
         $user = User::with("position")->where("id", $id)->first();
         if ($user) {
@@ -39,13 +40,13 @@ class UsersController extends Controller
                 ),
             ], 200);
         } else {
-            return response()->json(["success" => false,
+            throw new HttpResponseException(response()->json(["success" => false,
                 "message" => "The user with the requested identifier does not exist",
                 "fails" => [
                     "user_id" => [
                         "User not found",
                     ],
-                ]], 404);
+                ]], 400));
         }
     }
     public function getUsers(Request $request): JsonResponse
@@ -150,11 +151,12 @@ class UsersController extends Controller
                     "message" => "New user successfully registered",
                 ], 200);
             } else {
-                return response()->json([
+
+                throw new HttpResponseException(response()->json([
                     "success" => false,
                     "message" => "Image is invalid.",
                     "fails" => ['photo' => "Image is invalid."],
-                ], 422);
+                ], 422));
             }
 
         }
