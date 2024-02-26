@@ -36,12 +36,11 @@ const Users = () => {
      * Hook what reset data when created new user and get it again
      */
     useEffect(()=>{
-        if (pages - page == 1) {
+        if (pages < page&&pages!=null) {
             btn.current.style.display = "none";
         }
         if(re_render)
         {
-            console.log(re_render)
             setRe_Render(false);
             setPage(2);
             setUsers("");
@@ -49,8 +48,7 @@ const Users = () => {
                 return response.json()
             }).then(data => {
                 setUsers(data.users);
-                setPages(data.total_pages)
-                
+                setPages(data.total_pages);
             })
 
         }
@@ -62,7 +60,7 @@ const Users = () => {
         fetch(import.meta.env.VITE_APP_URL+"/api/v1/users?page=" + page + "&count=6").then(response => {
             return response.json()
         }).then(data => {
-            setUsers(users.concat(data.users));
+            setUsers([...users,...data.users]);
             setPage(page + 1)
         })
     }

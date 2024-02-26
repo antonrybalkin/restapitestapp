@@ -28,21 +28,21 @@ class UserFactory extends Factory
             $postions = Positions::all(['id']);
             Cache::add('positions', $postions, 100000);
         }
-        $email = fake()->unique()->safeEmail();
-        $email = str_replace(["@example.com", "@example.net", "@example.org"], fake()->randomElement(["@gmail.com", '@bing.com', '@ukr.net']), $email);
+
         \Tinify\setKey(env("TINYPNG_API_KEY"));
         $gender = fake()->randomElement(['male', 'female']);
         $name = fake()->name($gender);
+        $email = Str::slug($name) . fake()->randomElement(["@gmail.com", '@bing.com', '@ukr.net']);
         $photo = Str::slug($name) . '.jpeg';
         //$source = \Tinify\fromUrl('https://thispersondoesnotexist.com/');
         //file_put_contents(storage_path('app/public/images/') . $photo, file_get_contents('https://thispersondoesnotexist.com/'));
-        // $source = \Tinify\fromUrl($this->getImage($gender));
-        // $resized = $source->resize(array(
-        //     "method" => "cover",
-        //     "width" => 70,
-        //     "height" => 70,
-        // ));
-        // $resized->toFile(storage_path('app/public/images/') . $photo);
+        $source = \Tinify\fromUrl($this->getImage($gender . ' uniq'));
+        $resized = $source->resize(array(
+            "method" => "cover",
+            "width" => 70,
+            "height" => 70,
+        ));
+        $resized->toFile(storage_path('app/public/images/') . $photo);
         $phone = strval(fake()->unique()->randomNumber(7, true));
         $operators = ['050', '066', '095', '099', '067', '068', '096', '097', '098', '063', '073', '093', '091', '092', '094'];
         $phone = '+38' . fake()->randomElement($operators) . strval($phone);

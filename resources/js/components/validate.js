@@ -67,6 +67,89 @@ export async function validationImg(file) {
 
 }
 /**
+ * func what set errors in form
+ * @param {Object} errors errors from responce
+ * @param {Object} keys object with key for set error
+ * @returns {Object} object with status result
+ */
+export function setErrors(errors, keys)
+{
+    Object.entries(errors).forEach((value) =>{
+        let key=value[0];
+        let msg=value[1];
+        if (key=='position_id') {
+            document
+                .querySelector(".registration_fieldset .input_error")
+                .classList
+                .remove("hide");
+            document
+                .querySelector(".registration_fieldset .input_error")
+                .innerText = msg.length>1?msg.join(','):msg[0];
+            document
+                .querySelector(".registration_fieldset")
+                .classList
+                .add("error")
+        }
+        if (key=='name') {
+            document
+                .querySelector(".input[name='" + keys[key] + "'] ~ .input_error")
+                .classList
+                .remove("hide");
+            document
+                .querySelector(".input[name='" + keys[key] + "'] ~ .input_error")
+                .innerText =  msg.length>1?msg.join(','):msg[0];
+            document
+                .querySelector(".input[name='" + keys[key] + "']")
+                .classList
+                .add("error")
+        }
+        if (key=='email') {
+            document
+                .querySelector(".input[name='" + keys[key] + "'] ~ .input_error")
+                .classList
+                .remove("hide");
+            document
+                .querySelector(".input[name='" + keys[key] + "'] ~ .input_error")
+                .innerText =  msg.length>1?msg.join(','):msg[0];
+            document
+                .querySelector(".input[name='" + keys[key] + "']")
+                .classList
+                .add("error")
+        }
+        if (key=='photo') {
+            document
+                .querySelector(".file_error")
+                .classList
+                .remove("hide");
+            document
+                .querySelector(".file_error")
+                .innerText =  msg.length>1?msg.join(','):msg[0];
+            document
+                .querySelector(".file_input")
+                .classList
+                .add("error")
+        }
+        if (value=='phone') {
+            document
+                .querySelector(".input[name='" + keys[key] + "'] ~ .input_error")
+                .classList
+                .remove("hide");
+            document
+                .querySelector(".input[name='" + keys[key] + "'] ~ .input_helper")
+                .classList
+                .add("hide");
+            document
+                .querySelector(".input[name='" + keys[key] + "'] ~ .input_error")
+                .innerText = msg.length>1?msg.join(','):msg[0];
+            document
+                .querySelector(".input[name='" + keys[key] + "']")
+                .classList
+                .add("error")
+        }
+    });
+} 
+
+/**
  * func what validate form
  * @param {FormData} fromdata fromdata
  * @param {Object} keys object with key for set error

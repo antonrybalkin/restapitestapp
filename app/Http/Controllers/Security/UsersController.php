@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Traits\Image;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -50,7 +51,7 @@ class UsersController extends Controller
     public function getUsers(Request $request): JsonResponse
     {
         $page = $request->page ? $request->page : 1;
-        $count = $request->count ? $request->count : 5;
+        $count = $request->count ? $request->count : 6;
         $offset = $request->offset ? $request->offset : 0;
 
         if (($page < 1 && is_numeric($page)) || ($offset < 0 && is_numeric($offset)) || (($count < 1 || $count > 100) && is_numeric($count)) || !is_numeric($page) || !is_numeric($offset) || !is_numeric($count)) {
@@ -71,19 +72,22 @@ class UsersController extends Controller
                 }
             }
 
-            return response()->json(["success" => false,
+            throw new HttpResponseException(response()->json(["success" => false,
                 "message" => "Validation failed",
-                "fails" => $error], 400);
+                "fails" => $error], 400));
         }
 
         $users = User::select("users.id", "users.name", "users.email", "users.phone", 'positions.name as position', "users.position_id")
             ->selectRaw("UNIX_TIMESTAMP(users.created_at) as registration_timestamp, users.photo")
-            ->join('positions', 'users.position_id', '=', 'positions.id')
+            ->join('positions', 'users.position_id', '=', 'positions.id')->orderBy("id", 'asc')
             ->paginate($count);
 
         if ($users->lastPage() < $page && count($users->items()) == 0) {
-            return response()->json(["success" => false,
-                "message" => "Page not found"], 400);
+
+            throw new HttpResponseException(response()->json([
+                "success" => false,
+                "message" => "Page not found",
+            ], 400));
         }
 
         return response()->json([
@@ -114,12 +118,12 @@ class UsersController extends Controller
             if (preg_match($phoneRegexp, $data['email']) == 0) {
                 $errors['phone'][] = 'The phone field is required.';
             }
-            $response = [
+
+            throw new HttpResponseException(response()->json([
                 "success" => false,
                 "message" => "Validation failed",
                 "fails" => $errors,
-            ];
-            return response()->json($response, 422);
+            ], 422));
         }
 
         $image = $data['photo'];
@@ -129,10 +133,11 @@ class UsersController extends Controller
         $user = User::where('name', $data['name'])->where('email', $data['email'])->where('phone', $data['phone'])->where('position_id', $data['position_id'])->first();
 
         if ($user) {
-            return response()->json([
+
+            throw new HttpResponseException(response()->json([
                 "success" => false,
                 "message" => "User with this phone or email already exist",
-            ], 409);
+            ], 409));
         } else {
             $image = $this->saveImage($image, $data['name']);
 
@@ -143,11 +148,12 @@ class UsersController extends Controller
                     "success" => true,
                     "user_id" => $user->id,
                     "message" => "New user successfully registered",
-                ], 422);
+                ], 200);
             } else {
                 return response()->json([
                     "success" => false,
-                    "message" => " Image is invalid.",
+                    "message" => "Image is invalid.",
+                    "fails" => ['photo' => "Image is invalid."],
                 ], 422);
             }
 
