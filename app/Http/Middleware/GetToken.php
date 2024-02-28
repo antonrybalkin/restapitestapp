@@ -24,7 +24,7 @@ class GetToken
             $tokenModel = Token::where("token", $token)->first();
 
             if ($tokenModel) {
-                if ((strtotime($tokenModel->expires_at) + 2400) < Carbon::now()->timestamp) {
+                if ((strtotime($tokenModel->expires_at)) < Carbon::now()->timestamp) {
                     $tokenModel->delete();
                     return response()->json([
                         "success" => false,
